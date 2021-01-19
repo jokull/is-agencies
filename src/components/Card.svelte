@@ -3,7 +3,7 @@
   import Field from "./Field.svelte";
 </script>
 
-<div class="border-darkcloud border-t-4 border-b mb-4">
+<div class="border-darkcloud border-t-4 border-b mb-4 card">
   <div class="border-l border-r border-dust h-full flex flex-col">
     <div class="pb-8 border-b border-dust h-24 overflow-hidden">
       {#if agency.logo}
@@ -17,9 +17,9 @@
       {/if}
     </div>
     <div class="p-2 flex-grow">
-      <div class="text-2xl leading-tight font-bold">
+      <h2 class="text-3xl leading-tight font-bold">
         <a target="_blank" href={`//${agency.url}`}>{agency.name}</a>
-      </div>
+      </h2>
       <div class="flex">
         {#if agency.founded}
           <Field label="Since" value={agency.founded} />

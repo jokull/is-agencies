@@ -12,3 +12,14 @@ body {
 .pill[aria-selected] {
   @apply bg-dust;
 }
+
+.card:hover h2 {
+  @apply text-ribbon inline-block relative;
+}
+
+h2:hover::after {
+  content: "";
+  height: 3px;
+  bottom: -2px;
+  @apply bg-ribbon w-full block absolute;
+}
