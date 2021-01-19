@@ -1,50 +1,38 @@
-<script>
-	import successkid from 'images/successkid.jpg';
+<script context="module">
+  import { createClient } from "contentful";
+
+  export async function preload({ params }, session) {
+    const draftMode = session.draftMode || false;
+    const accessToken = draftMode
+      ? session.contentfulStagingToken
+      : session.contentfulAccessToken;
+
+    const client = createClient({
+      space: session.contentfulSpace,
+      accessToken,
+      host: draftMode ? "preview.contentful.com" : null,
+      resolveLinks: true,
+    });
+    try {
+      const response = await client.getEntries({ content_type: "agency" });
+      return { items: response.items };
+    } catch (error) {
+      return [];
+    }
+  }
 </script>
 
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
+<script>
+  export let items;
+</script>
 
 <svelte:head>
-	<title>Sapper project template</title>
+  <title>Icelandic Agencies</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h1>Agencies</h1>
 
-<figure>
-	<img alt="Success Kid" src="{successkid}">
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+{#each items as agency}
+  {@debug agency}
+  <div>{agency.fields.name}</div>
+{/each}
