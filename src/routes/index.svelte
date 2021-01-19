@@ -45,21 +45,23 @@
     <span class="block font-serif text-lg lg:text-4xl italic font-light">
       The Big List of
     </span>
-    <span class="text-ribbon text-4xl font-medium">Icelandic Web Agencies</span>
+    <span class="text-ribbon text-4xl lg:text-5xl font-medium">
+      Icelandic Web Agencies
+    </span>
   </h1>
 
   <div class="mb-8">
     <div class="font-light pb-2">Filter</div>
     <SizeOption {size} onClick={updateSize} value={undefined}>All</SizeOption>
     <SizeOption {size} onClick={updateSize} value={"hsciTpdMBo4mHO9J4yLhA"}>
-      <span class="font-medium">Small</span> (1–10)
+      Small <span class="font-light">(1–10)</span>
     </SizeOption>
     <SizeOption {size} onClick={updateSize} value={"4HuxQINIsQ5Y8BWcg9vPte"}>
-      <span class="font-medium">Large</span> (11+)
+      Large <span class="font-light">(11+)</span>
     </SizeOption>
   </div>
 
-  <div class="grid gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <div class="grid gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     {#each items as agency}
       {#if (agency.fields.size && agency.fields.size.sys.id === size) || size === undefined}
         <Card agency={agency.fields} />

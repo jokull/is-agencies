@@ -3,7 +3,9 @@
   import Field from "./Field.svelte";
 </script>
 
-<div class="border-darkcloud border-t-4 border-b mb-4 card">
+<div
+  class="border-darkcloud border-t-4 border-b hover:bg-white hover:shadow-xl transition-all card"
+>
   <div class="border-l border-r border-dust h-full flex flex-col">
     <div class="pb-8 border-b border-dust h-24 overflow-hidden">
       {#if agency.logo}

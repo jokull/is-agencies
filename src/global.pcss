@@ -6,20 +6,14 @@ body {
 }
 
 .pill {
-  @apply rounded-full border border-dust block mr-2 px-3 py-1 text-xs mb-2 font-light;
+  @apply rounded-full border border-dust block mr-2 px-3 py-1 text-xs mb-2 font-medium;
 }
 
 .pill[aria-selected] {
-  @apply bg-dust;
+  @apply bg-darkcloud border-darkcloud text-dust;
 }
 
-.card:hover h2 {
-  @apply text-ribbon inline-block relative;
-}
-
-h2:hover::after {
-  content: "";
-  height: 3px;
-  bottom: -2px;
-  @apply bg-ribbon w-full block absolute;
+.card h2 a:hover {
+  @apply text-ribbon underline;
+  text-decoration-thickness: 3px;
 }
