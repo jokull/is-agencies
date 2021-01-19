@@ -1,5 +1,9 @@
+<script>
+  export let segment;
+</script>
+
 <main>
-  <slot />
+  <slot {segment} />
 </main>
 
 <style global lang="postcss">

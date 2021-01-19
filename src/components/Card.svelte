@@ -1,0 +1,43 @@
+<script>
+  export let agency;
+  export let size;
+  import Field from "./Field.svelte";
+</script>
+
+<div class="border-darkcloud border-t-4 border-b mb-4">
+  <div class="border-l border-r border-dust h-full flex flex-col">
+    <div class="pb-8 border-b border-dust h-24 overflow-hidden">
+      {#if agency.logo}
+        <img
+          src={`${agency.logo.fields.file.url}`}
+          alt="company logo"
+          class="p-2 block pr-12"
+        />
+      {:else}
+        <div class="rounded-md bg-black opacity-5 m-2 pr-12 h-10" />
+      {/if}
+    </div>
+    <div class="p-2 flex-grow">
+      <div class="text-2xl leading-tight font-bold">
+        <a target="_blank" href={`//${agency.url}`}>{agency.name}</a>
+      </div>
+      <div class="flex">
+        {#if agency.founded}
+          <Field label="Since" value={agency.founded} />
+        {/if}
+        {#if agency.size}
+          <Field label="Size" value={agency.size} />
+        {/if}
+      </div>
+    </div>
+    {#if agency.tags}
+      <div class="p-2 border-t border-sand">
+        {#each agency.tags as tag}
+          <div
+            class="rounded-full border border-dust inline-block mr-2 px-3 py-1 text-xs"
+          >{tag.fields.name}</div>
+        {/each}
+      </div>
+    {/if}
+  </div>
+</div>
