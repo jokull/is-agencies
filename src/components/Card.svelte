@@ -1,6 +1,5 @@
 <script>
   export let agency;
-  export let size;
   import Field from "./Field.svelte";
 </script>
 
@@ -11,7 +10,7 @@
         <img
           src={`${agency.logo.fields.file.url}`}
           alt="company logo"
-          class="p-2 block pr-12"
+          class="p-2 block pr-12 max-h-16"
         />
       {:else}
         <div class="rounded-md bg-black opacity-5 m-2 pr-12 h-10" />
