@@ -25,7 +25,7 @@
           <Field label="Since" value={agency.founded} />
         {/if}
         {#if agency.size}
-          <Field label="Size" value={agency.size} />
+          <Field label="Size" value={agency.size.fields.label} />
         {/if}
       </div>
     </div>
