@@ -13,26 +13,37 @@
       host: draftMode ? "preview.contentful.com" : null,
       resolveLinks: true,
     });
-    try {
-      const response = await client.getEntries({
+    const requests = [
+      client.getEntries({
         content_type: "agency",
         order: "fields.name",
-      });
-      return { items: response.items };
+      }),
+      client.getEntries({ content_type: "tag" }),
+    ];
+    try {
+      const [agencies, tags] = await Promise.all(requests);
+      return { agencies: agencies.items, tags: tags.items };
     } catch (error) {
-      return [];
+      console.log(error);
+      return { agencies: [], tags: [] };
     }
   }
 </script>
 
 <script>
-  export let items;
-  let size;
+  export let agencies;
+  export let tags;
+  let selectedSize;
+  let selectedTag;
   import Card from "../components/Card.svelte";
-  import SizeOption from "../components/SizeOption.svelte";
+  import Option from "../components/Option.svelte";
 
   function updateSize(value) {
-    size = value;
+    selectedSize = value;
+  }
+
+  function updateTag(value) {
+    selectedTag = value;
   }
 </script>
 
@@ -46,25 +57,67 @@
       The Big List of
     </span>
     <span class="text-ribbon text-4xl lg:text-5xl font-medium">
-      Icelandic Web Agencies
+      Icelandic Digital Agencies
     </span>
   </h1>
 
-  <div class="mb-8">
-    <div class="font-light pb-2">Filter</div>
-    <SizeOption {size} onClick={updateSize} value={undefined}>All</SizeOption>
-    <SizeOption {size} onClick={updateSize} value={"hsciTpdMBo4mHO9J4yLhA"}>
-      Small <span class="font-light">(1–10)</span>
-    </SizeOption>
-    <SizeOption {size} onClick={updateSize} value={"4HuxQINIsQ5Y8BWcg9vPte"}>
-      Large <span class="font-light">(11+)</span>
-    </SizeOption>
+  <div class="flex">
+    <div class="mb-8 mr-4">
+      <div class="font-light pb-2">Size</div>
+      <Option
+        selected={selectedSize === undefined}
+        onClick={updateSize}
+        value={undefined}>All</Option
+      >
+      <div>
+        <Option
+          selected={selectedSize === "hsciTpdMBo4mHO9J4yLhA"}
+          onClick={updateSize}
+          value={"hsciTpdMBo4mHO9J4yLhA"}
+        >
+          Small <span class="font-light hidden sm:inline">(1–10 employees)</span
+          >
+        </Option>
+        <Option
+          selected={selectedSize === "4HuxQINIsQ5Y8BWcg9vPte"}
+          onClick={updateSize}
+          value={"4HuxQINIsQ5Y8BWcg9vPte"}
+        >
+          Large <span class="font-light hidden sm:inline">(11+ employees)</span>
+        </Option>
+      </div>
+    </div>
+    <div class="mb-8">
+      <div class="font-light pb-2">Tag</div>
+      <Option
+        selected={selectedTag === undefined}
+        onClick={updateTag}
+        value={undefined}
+      >
+        All
+      </Option>
+      <div>
+        {#each tags as tag}
+          <Option
+            selected={selectedTag === tag.sys.id}
+            onClick={updateTag}
+            value={tag.sys.id}
+          >
+            {tag.fields.name}
+          </Option>
+        {/each}
+      </div>
+    </div>
   </div>
 
   <div class="grid gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-    {#each items as agency}
-      {#if (agency.fields.size && agency.fields.size.sys.id === size) || size === undefined}
-        <Card agency={agency.fields} />
+    {#each agencies as agency}
+      {#if (agency.fields.size && agency.fields.size.sys.id === selectedSize) || selectedSize === undefined}
+        {#if (agency.fields.tags && agency.fields.tags.filter((tag) => {
+            return tag.sys.id === selectedTag;
+          }).length) || selectedTag === undefined}
+          <Card agency={agency.fields} />
+        {/if}
       {/if}
     {/each}
   </div>

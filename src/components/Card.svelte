@@ -11,7 +11,7 @@
       {#if agency.logo}
         <img
           src={`${agency.logo.fields.file.url}`}
-          alt="company logo"
+          alt=""
           class="p-2 block pr-12 max-h-16"
         />
       {:else}
@@ -32,7 +32,7 @@
       </div>
     </div>
     {#if agency.tags}
-      <div class="p-2 border-t border-sand">
+      <div class="p-2 border-t border-dust">
         {#each agency.tags as tag}
           <div
             class="rounded-full border border-dust inline-block mr-2 px-3 py-1 text-xs"
