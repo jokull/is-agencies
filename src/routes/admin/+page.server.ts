@@ -93,7 +93,7 @@ export const actions: Actions = {
     const db = createDb(platform.env.DB);
     const data = await request.formData();
     const id = getFormString(data, 'id');
-    const currentVisible = getFormString(data, 'visible') === '1';
+    const currentVisible = getFormString(data, 'visible') === 'true';
 
     if (!id) {
       return fail(400, { error: 'Agency ID required' });
