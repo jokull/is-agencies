@@ -11,3 +11,10 @@ vite.config.ts.timestamp-*
 vite.config.js.timestamp-*
 bun.lockb
 .dump/
+
+# Cloudflare Wrangler local state
+.wrangler/
+.mf/
+
+# Claude Code configuration (personal)
+.claude/
