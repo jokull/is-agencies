@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { enhance } from '$app/forms';
-	import { normalizeUrl } from '$lib/utils';
 
 	let { data } = $props<{ data: PageData }>();
 
@@ -59,9 +58,6 @@
 								Name
 							</th>
 							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-								URL
-							</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 								Size
 							</th>
 							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -97,16 +93,6 @@
 									{#if agency.founded}
 										<div class="text-sm text-gray-500">Founded {agency.founded}</div>
 									{/if}
-								</td>
-								<td class="px-6 py-4 whitespace-nowrap">
-									<a
-										href={normalizeUrl(agency.url)}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="text-sm text-ribbon hover:underline"
-									>
-										{agency.url}
-									</a>
 								</td>
 								<td class="px-6 py-4 whitespace-nowrap">
 									<span class="text-sm text-gray-900">
