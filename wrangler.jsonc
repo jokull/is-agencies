@@ -31,8 +31,5 @@
 
   // Environment variables
   // For local dev: values come from .dev.vars
-  // For production: set via Cloudflare Pages dashboard or wrangler secret put
-  "vars": {
-    "SECRET": "CHANGE_ME_IN_PRODUCTION"
-  }
+  // For production: set via wrangler pages secret put SECRET
 }
