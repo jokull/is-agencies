@@ -5,9 +5,10 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "wrangler pages dev --compatibility-date=2024-12-01 -- vite dev",
+    "dev": "vite dev",
     "build": "vite build",
     "preview": "wrangler pages dev .svelte-kit/cloudflare",
+    "types": "wrangler types",
     "lint": "oxlint -c .config/.oxlintrc.json --type-aware --type-check --deny-warnings --report-unused-disable-directives",
     "fmt": "oxfmt -c .config/.oxfmtrc.json",
     "fmt:check": "oxfmt -c .config/.oxfmtrc.json --check",
@@ -15,10 +16,10 @@
   },
   "dependencies": {
     "@sveltejs/adapter-cloudflare": "7.2.4",
-    "@sveltejs/kit": "2.49.1"
+    "@sveltejs/kit": "2.49.1",
+    "nanoid": "^5.1.6"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20251205.0",
     "@sveltejs/vite-plugin-svelte": "6.2.1",
     "@tailwindcss/vite": "4.1.17",
     "@types/node": "24.10.1",

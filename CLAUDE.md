@@ -34,7 +34,8 @@ is-agencies/
 │   ├── 0001_initial_schema.sql # Initial tables (agencies, tags, sizes)
 │   ├── 0002_add_slugs.sql      # Add slug columns
 │   ├── 0003_slug_constraints.sql
-│   └── 0004_slug_not_null.sql
+│   ├── 0004_slug_not_null.sql
+│   └── 0005_add_visible_field.sql # Add visible boolean for publish/unpublish
 ├── scripts/                     # Utility scripts
 │   ├── dump-contentful.ts      # Export data from Contentful
 │   ├── migrate-to-d1.ts        # Import data into D1
@@ -45,21 +46,35 @@ is-agencies/
 │   │   └── components/         # Reusable Svelte components
 │   │       ├── Card.svelte     # Agency card display
 │   │       ├── Field.svelte    # Data field display
-│   │       └── Option.svelte   # Filter option button
+│   │       ├── Option.svelte   # Filter option button
+│   │       └── admin/          # Admin-specific components
+│   │           └── AgencyForm.svelte # Shared form for create/edit
 │   ├── routes/
 │   │   ├── +layout.svelte      # Root layout with CSS import
 │   │   ├── +page.svelte        # Homepage with agency list
 │   │   ├── +page.server.ts     # Server-side data loading from D1
-│   │   └── about/
-│   │       └── +page.svelte    # About page
+│   │   ├── about/
+│   │   │   └── +page.svelte    # About page
+│   │   ├── admin/              # Admin CRUD interface
+│   │   │   ├── +layout.server.ts # Auth guard
+│   │   │   ├── +layout.svelte  # Admin navigation
+│   │   │   ├── +page.svelte    # Dashboard with agency list
+│   │   │   ├── +page.server.ts # Load agencies + delete/toggle actions
+│   │   │   ├── agencies/
+│   │   │   │   ├── new/        # Create agency
+│   │   │   │   └── [id]/edit/  # Edit agency
+│   │   │   └── images/         # R2 image management
+│   │   └── images/[key]/       # Image serving endpoint
+│   │       └── +server.ts      # Serve images from R2
 │   ├── app.css                 # Global styles + Tailwind
 │   ├── app.d.ts                # TypeScript + Cloudflare Platform types
 │   ├── app.html                # HTML template
 │   └── ambient.d.ts            # Additional type definitions
 ├── static/                      # Static assets
 │   └── images/                 # Image assets
-├── .env                         # Environment variables (empty - uses wrangler.toml)
-├── wrangler.toml               # Cloudflare configuration (D1, R2 bindings)
+├── .env                         # Environment variables (empty - uses wrangler.jsonc)
+├── wrangler.jsonc              # Cloudflare configuration (D1, R2 bindings)
+├── worker-configuration.d.ts   # Auto-generated Cloudflare types (committed)
 ├── svelte.config.js            # SvelteKit configuration
 ├── vite.config.ts              # Vite configuration
 ├── tsconfig.json               # TypeScript configuration
@@ -79,8 +94,27 @@ is-agencies/
 ### Cloudflare Platform Integration
 - D1 database and R2 storage are accessed via `platform.env`
 - Platform types defined in `app.d.ts` via `App.Platform` interface
+- Types auto-generated from `wrangler.jsonc` via `wrangler types`
 - Local development uses wrangler for platform emulation
 - Server routes have access to D1 and R2 bindings
+
+### Type Generation
+Cloudflare binding types are auto-generated from `wrangler.jsonc`:
+
+```bash
+bun run types  # Regenerate worker-configuration.d.ts
+```
+
+Run this after:
+- Adding/removing D1 databases
+- Adding/removing R2 buckets
+- Changing environment variables in `wrangler.jsonc`
+- Updating any Cloudflare bindings configuration
+
+The generated `worker-configuration.d.ts` file contains:
+- `Env` interface with your specific bindings (DB, IMAGES, SECRET)
+- Full Cloudflare Workers runtime types (D1Database, R2Bucket, etc.)
+- This file is committed to git for team collaboration
 
 ### Svelte 5 Runes
 This project uses Svelte 5's runes system:
@@ -118,12 +152,23 @@ Custom colors are used via standard Tailwind classes: `bg-sand`, `text-ribbon`, 
 # Install dependencies
 bun install
 
-# Start dev server with Cloudflare emulation
+# For local development with hot reload and Cloudflare bindings:
 bun run dev
 
-# This runs: wrangler pages dev --compatibility-date=2024-12-01 -- vite dev
-# Open http://localhost:8788
+# This runs: vite dev (uses getPlatformProxy under the hood)
+# Open http://localhost:5173
+# Cloudflare bindings (D1, R2) are emulated via platformProxy
+
+# For testing the production build locally:
+bun run build    # Build first
+bun run preview  # Test with wrangler pages dev
+
+# Preview opens: http://localhost:8788
 ```
+
+**Development Modes:**
+- **`bun run dev`**: Fast development with HMR, emulated Cloudflare bindings via `getPlatformProxy`
+- **`bun run preview`**: Tests the actual built output with full Wrangler emulation (slower, no HMR)
 
 ### Code Quality
 ```bash

@@ -5,7 +5,22 @@ import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 const config = {
   preprocess: vitePreprocess(),
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      // Cloudflare Pages configuration
+      routes: {
+        include: ["/*"],
+        exclude: ["<all>"], // <build>, <files>, <prerendered>, or <all>
+      },
+      platformProxy: {
+        configPath: "wrangler.jsonc",
+        environment: undefined,
+        experimentalJsonConfig: true,
+        persist: true,
+      },
+    }),
+    prerender: {
+      entries: [], // Disable prerendering - full dynamic mode
+    },
   },
 };
 

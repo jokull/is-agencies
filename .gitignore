@@ -6,6 +6,7 @@ node_modules
 .env
 .env.*
 !.env.example
+.dev.vars
 vite.config.ts.timestamp-*
 vite.config.js.timestamp-*
 bun.lockb

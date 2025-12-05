@@ -8,7 +8,7 @@
 	"env": {
 		"builtin": true
 	},
-	"ignorePatterns": ["**/.svelte-kit/**", "**/build/**", "**/.config/**", "**/node_modules/**"],
+	"ignorePatterns": ["**/.svelte-kit/**", "**/build/**", "**/.config/**", "**/node_modules/**", "**/.wrangler/**", "**/scripts/**", "**/worker-configuration.d.ts"],
 	"rules": {
 		"eslint/no-unused-vars": [
 			"warn",
@@ -28,7 +28,7 @@
 				"fixStyle": "separate-type-imports"
 			}
 		],
-		"typescript/no-explicit-any": "warn",
+		"typescript/no-explicit-any": "error",
 		"typescript/no-require-imports": "warn"
 	}
 }
