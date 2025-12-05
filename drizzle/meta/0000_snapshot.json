@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "dbff42fe-3af8-4cf7-98e0-072e2fa7df11",
+  "id": "eefc84c8-6b1c-4659-9531-48aa77de26cb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "agencies": {
@@ -56,13 +56,6 @@
           "notNull": false,
           "autoincrement": false
         },
-        "slug": {
-          "name": "slug",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
         "visible": {
           "name": "visible",
           "type": "integer",
@@ -89,13 +82,6 @@
         }
       },
       "indexes": {
-        "agencies_slug_unique": {
-          "name": "agencies_slug_unique",
-          "columns": [
-            "slug"
-          ],
-          "isUnique": true
-        },
         "idx_agencies_name": {
           "name": "idx_agencies_name",
           "columns": [

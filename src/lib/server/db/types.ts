@@ -1,5 +1,5 @@
 import type { InferSelectModel, InferInsertModel } from 'drizzle-orm';
-import { agencies, tags, sizes, agencyTags } from './schema';
+import type { agencies, tags, sizes, agencyTags } from './schema';
 
 // Select types (reading from database)
 export type Agency = InferSelectModel<typeof agencies>;

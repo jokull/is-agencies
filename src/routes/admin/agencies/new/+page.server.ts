@@ -56,14 +56,6 @@ export const actions: Actions = {
       return fail(400, { error: 'Name and URL are required' });
     }
 
-    // Generate slug from name
-    const slug = name
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-
     const id = nanoid();
 
     try {
@@ -75,7 +67,6 @@ export const actions: Actions = {
         founded: founded ? parseInt(founded) : null,
         logoUrl: logo_url || null,
         sizeId: size_id || null,
-        slug,
         visible: true,
       });
 

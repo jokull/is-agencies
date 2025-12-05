@@ -6,14 +6,12 @@ CREATE TABLE `agencies` (
 	`logo_url` text,
 	`logo_id` text,
 	`size_id` text,
-	`slug` text NOT NULL,
 	`visible` integer DEFAULT true NOT NULL,
 	`created_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	`updated_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	FOREIGN KEY (`size_id`) REFERENCES `sizes`(`id`) ON UPDATE no action ON DELETE no action
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `agencies_slug_unique` ON `agencies` (`slug`);--> statement-breakpoint
 CREATE INDEX `idx_agencies_name` ON `agencies` (`name`);--> statement-breakpoint
 CREATE INDEX `idx_agencies_size` ON `agencies` (`size_id`);--> statement-breakpoint
 CREATE INDEX `idx_agencies_visible` ON `agencies` (`visible`);--> statement-breakpoint

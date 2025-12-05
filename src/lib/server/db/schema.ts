@@ -45,7 +45,6 @@ export const agencies = sqliteTable(
     logoUrl: text('logo_url'),
     logoId: text('logo_id'),
     sizeId: text('size_id').references(() => sizes.id),
-    slug: text('slug').notNull().unique(),
     // SQLite boolean as integer: 1 = true, 0 = false
     visible: integer('visible', { mode: 'boolean' }).notNull().default(true),
     createdAt: text('created_at')

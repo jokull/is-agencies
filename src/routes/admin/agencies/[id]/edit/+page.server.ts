@@ -74,14 +74,6 @@ export const actions: Actions = {
       return fail(400, { error: 'Name and URL are required' });
     }
 
-    // Generate new slug from name
-    const slug = name
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-
     try {
       // Update agency
       await db
@@ -92,7 +84,6 @@ export const actions: Actions = {
           founded: founded ? parseInt(founded) : null,
           logoUrl: logo_url || null,
           sizeId: size_id || null,
-          slug,
           updatedAt: sql`CURRENT_TIMESTAMP`,
         })
         .where(eq(schema.agencies.id, id));
