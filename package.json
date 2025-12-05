@@ -19,17 +19,16 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20251205.0",
-    "@sveltejs/vite-plugin-svelte": "5.1.1",
+    "@sveltejs/vite-plugin-svelte": "6.2.1",
     "@tailwindcss/vite": "4.1.17",
     "@types/node": "24.10.1",
-    "gh-pages": "6.3.0",
-    "oxfmt": "0.15.0",
+    "oxfmt": "0.16.0",
     "oxlint": "1.31.0",
     "oxlint-tsgolint": "0.8.3",
     "svelte": "5.45.5",
     "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
-    "vite": "6.4.1",
+    "vite": "7.2.6",
     "wrangler": "4.53.0"
   }
 }
