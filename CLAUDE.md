@@ -422,107 +422,23 @@ Check `.config/.oxlintrc.json` for rule configuration. Add overrides if needed f
 - Verify logo_url values in database point to R2
 - For local dev, ensure R2 emulation is working
 
-## Lessons Learned / Common Gotchas
+## Common Gotchas
 
-### Drizzle Relations Display Issue
-**Problem**: Displaying `agency.size` in admin list showed `[object Object]` instead of the size label.
+**Drizzle Relations**: When using `with: { size: true }`, relations return full objects. Access properties explicitly: `agency.size?.label` not `agency.size`
 
-**Root Cause**: When using Drizzle's `with: { size: true }` in queries, the related field becomes an object (e.g., `{ id, label, slug }`), not a string.
+**Svelte 5 Select**: Pre-select with `value={initialValue}` on `<select>`, not `selected={condition}` on each `<option>`
 
-**Solution**: Access the specific property: `{agency.size?.label || 'N/A'}` instead of `{agency.size || 'N/A'}`
+**Secrets Management**:
+- Production: `bunx wrangler pages secret put SECRET` (encrypted, not in repo)
+- Local: Use `.dev.vars` file (gitignored)
+- Never commit secrets to `wrangler.jsonc`
+- Secret changes require redeployment
 
-**Lesson**: Always check what Drizzle relations actually return - they're full objects, not just IDs or labels.
+**Deployment**: Integrated via Cloudflare Pages CI - all changes pushed to `main` branch are deployed automatically
 
-### Svelte 5 Select Pre-selection
-**Problem**: Using `selected={condition}` attribute on each `<option>` tag didn't work for pre-selecting values in forms.
+**Wrangler Commands**: Use `bunx wrangler` if wrangler isn't globally installed
 
-**Wrong approach**:
-```svelte
-<select name="size_id">
-  {#each sizes as size}
-    <option value={size.id} selected={agency?.size_id === size.id}>
-      {size.label}
-    </option>
-  {/each}
-</select>
-```
-
-**Correct approach**:
-```svelte
-<select name="size_id" value={agency?.size_id || ''}>
-  {#each sizes as size}
-    <option value={size.id}>
-      {size.label}
-    </option>
-  {/each}
-</select>
-```
-
-**Lesson**: In Svelte 5, use `value` binding on the `<select>` element itself, not `selected` on options.
-
-### Cloudflare Pages Secrets vs Environment Variables
-**Problem**: Sensitive values like passwords should not be committed to the repository in `wrangler.jsonc`.
-
-**Wrong approach** (security risk):
-```jsonc
-// wrangler.jsonc
-"vars": {
-  "SECRET": "my-password-here"  // ❌ Visible in git history!
-}
-```
-
-**Correct approach**:
-```bash
-# Set as a secret binding (encrypted, not in repo)
-bunx wrangler pages secret put SECRET
-
-# For local dev, use .dev.vars (gitignored)
-echo "SECRET=my-password" > .dev.vars
-```
-
-**Important**:
-- Secrets are encrypted and only accessible at runtime
-- Changes to secrets require a new deployment to take effect
-- `.dev.vars` must be in `.gitignore`
-- Remove any plaintext secrets from `wrangler.jsonc` after migrating to secret bindings
-
-### Drizzle Migrations on Existing Production Database
-**Problem**: Running `bun run db:migrate:prod` fails with "table already exists" errors when the production database was set up with older migration methods.
-
-**Root Cause**: The Drizzle migrations in `drizzle/` directory try to create tables that already exist from the legacy `migrations/` directory.
-
-**Solution**:
-- For existing production databases, skip the migration step during deployment
-- Use `bunx wrangler pages deploy .svelte-kit/cloudflare` directly
-- For new databases, run migrations first: `bun run db:migrate:prod`
-
-**Lesson**: When migrating between migration systems (legacy → Drizzle), production databases might already have the schema applied. Always check the current state before running migrations.
-
-### Deployment Workflow: CI/CD vs Manual
-**Setup**: This project uses Cloudflare Pages automatic deployments triggered by GitHub pushes, not manual deployments.
-
-**What happens**:
-1. Push to `main` branch
-2. Cloudflare Pages CI automatically builds and deploys
-3. New secrets/config take effect on this deployment
-
-**Don't**: Run manual `bun run deploy` or `wrangler pages deploy` - the CI handles it
-
-**Lesson**: Always check if the project uses CI/CD before manually deploying. Secret changes require a new deployment to take effect.
-
-### Using Wrangler Commands
-**Problem**: `wrangler` command not found in PATH.
-
-**Solution**: Use `bunx wrangler` instead of `wrangler` for all CLI commands.
-
-**Examples**:
-```bash
-bunx wrangler pages secret put SECRET
-bunx wrangler pages secret list
-bunx wrangler d1 execute is-agencies-db --local --command "SELECT * FROM agencies"
-```
-
-**Lesson**: When wrangler isn't globally installed, `bunx` automatically downloads and runs it.
+**Migrations**: Production database uses legacy migrations. Skip `db:migrate:prod` during deployment to avoid "table exists" errors
 
 ## Migration History
 
