@@ -1,0 +1,24 @@
+{
+  // Project name (should match Cloudflare Pages project name)
+  "name": "is-agencies",
+
+  // Cloudflare Workers/Pages compatibility date
+  "compatibility_date": "2024-12-01",
+
+  // D1 Database bindings
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "is-agencies-db",
+      "database_id": "23b6ef28-cddb-4b4b-8a76-21a9d49d643d"
+    }
+  ],
+
+  // R2 Bucket bindings for image storage
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "is-agencies-images"
+    }
+  ]
+}

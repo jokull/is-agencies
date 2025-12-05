@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-sand: #f8f6f1;
+	--color-darkcloud: #233454;
+	--color-ribbon: #0066f5;
+	--color-dust: #dad8d5;
+
+	--font-family-sans: 'IBM Plex Sans', ui-sans-serif;
+	--font-family-serif: 'IBM Plex Serif', ui-serif;
+	--font-family-mono: 'IBM Plex Mono', monospace;
+}
+
+.pill {
+	@apply rounded-full border border-dust mr-2 px-3 py-1 text-xs mb-2 font-medium;
+}
+
+.pill[data-selected='true'] {
+	@apply bg-darkcloud border-darkcloud text-dust;
+}
+
+.card h2 a:hover {
+	@apply text-ribbon underline;
+	text-decoration-thickness: 3px;
+}

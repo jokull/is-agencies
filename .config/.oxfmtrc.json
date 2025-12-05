@@ -1,0 +1,4 @@
+{
+	"$schema": "../node_modules/oxfmt/configuration_schema.json",
+	"ignorePatterns": [".svelte-kit/**", "build/**", ".config/**", "node_modules/**"]
+}
