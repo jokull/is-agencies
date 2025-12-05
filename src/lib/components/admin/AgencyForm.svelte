@@ -76,16 +76,15 @@
 				Website URL <span class="text-red-500">*</span>
 			</label>
 			<input
-				type="url"
+				type="text"
 				id="url"
 				name="url"
 				value={agency?.url || ''}
 				required
-				pattern="https://.*"
 				class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-ribbon focus:border-ribbon"
-				placeholder="https://example.com"
+				placeholder="example.com"
 			/>
-			<p class="mt-1 text-xs text-gray-500">Must start with https://</p>
+			<p class="mt-1 text-xs text-gray-500">Will be saved as https:// automatically</p>
 		</div>
 
 		<!-- Founded -->
