@@ -436,7 +436,12 @@ Check `.config/.oxlintrc.json` for rule configuration. Add overrides if needed f
 
 **Deployment**: Integrated via Cloudflare Pages CI - all changes pushed to `main` branch are deployed automatically
 
-**Wrangler Commands**: Use `bunx wrangler` if wrangler isn't globally installed
+**Wrangler Commands**: Use `bunx wrangler` instead of `wrangler` for all CLI commands
+```bash
+bunx wrangler pages secret put SECRET
+bunx wrangler pages secret list
+bunx wrangler d1 execute is-agencies-db --local --command "SELECT * FROM agencies"
+```
 
 **Migrations**: Production database uses legacy migrations. Skip `db:migrate:prod` during deployment to avoid "table exists" errors
 
