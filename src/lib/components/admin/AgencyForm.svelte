@@ -129,11 +129,12 @@
 			<select
 				id="size_id"
 				name="size_id"
+				value={agency?.size_id || ''}
 				class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-ribbon focus:border-ribbon"
 			>
 				<option value="">Select size...</option>
 				{#each sizes as size}
-					<option value={size.id} selected={agency?.size_id === size.id}>
+					<option value={size.id}>
 						{size.label}
 					</option>
 				{/each}
