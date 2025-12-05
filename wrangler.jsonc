@@ -2,8 +2,11 @@
   // Project name (should match Cloudflare Pages project name)
   "name": "is-agencies",
 
-  // Cloudflare Workers/Pages compatibility date
-  "compatibility_date": "2024-12-01",
+  // Cloudflare Workers/Pages compatibility date (latest)
+  "compatibility_date": "2025-01-01",
+
+  // Compatibility flags for SvelteKit
+  "compatibility_flags": ["nodejs_compat"],
 
   // Pages build output directory (SvelteKit adapter-cloudflare output)
   "pages_build_output_dir": ".svelte-kit/cloudflare",
