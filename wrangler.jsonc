@@ -16,7 +16,8 @@
     {
       "binding": "DB",
       "database_name": "is-agencies-db",
-      "database_id": "23b6ef28-cddb-4b4b-8a76-21a9d49d643d"
+      "database_id": "23b6ef28-cddb-4b4b-8a76-21a9d49d643d",
+      "migrations_dir": "./drizzle"
     }
   ],
 

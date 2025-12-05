@@ -15,7 +15,7 @@ This is a community-maintained directory of Icelandic web agencies, originally b
 - **Package Manager**: Bun
 - **Linting**: oxlint with type-aware checking
 - **Formatting**: oxfmt
-- **Database**: Cloudflare D1 (SQL database)
+- **Database**: Cloudflare D1 (SQL database) with Drizzle ORM
 - **Storage**: Cloudflare R2 (object storage for images)
 - **Deployment**: Cloudflare Pages via wrangler
 
@@ -30,7 +30,9 @@ is-agencies/
 ├── .config/                     # Tooling configuration
 │   ├── .oxlintrc.json          # oxlint configuration
 │   └── .oxfmtrc.json           # oxfmt configuration
-├── migrations/                  # D1 database migrations
+├── drizzle/                     # Drizzle ORM migrations
+│   └── 0000_fancy_gorilla_man.sql # Initial schema migration
+├── migrations/                  # Legacy D1 migrations (historical reference)
 │   ├── 0001_initial_schema.sql # Initial tables (agencies, tags, sizes)
 │   ├── 0002_add_slugs.sql      # Add slug columns
 │   ├── 0003_slug_constraints.sql
@@ -43,16 +45,21 @@ is-agencies/
 │   └── backfill-slugs.ts       # Generate slugs for existing data
 ├── src/
 │   ├── lib/
-│   │   └── components/         # Reusable Svelte components
-│   │       ├── Card.svelte     # Agency card display
-│   │       ├── Field.svelte    # Data field display
-│   │       ├── Option.svelte   # Filter option button
-│   │       └── admin/          # Admin-specific components
-│   │           └── AgencyForm.svelte # Shared form for create/edit
+│   │   ├── components/         # Reusable Svelte components
+│   │   │   ├── Card.svelte     # Agency card display
+│   │   │   ├── Field.svelte    # Data field display
+│   │   │   ├── Option.svelte   # Filter option button
+│   │   │   └── admin/          # Admin-specific components
+│   │   │       └── AgencyForm.svelte # Shared form for create/edit
+│   │   └── server/
+│   │       └── db/             # Drizzle ORM database layer
+│   │           ├── schema.ts   # Type-safe schema definitions
+│   │           ├── index.ts    # Database client factory
+│   │           └── types.ts    # Inferred TypeScript types
 │   ├── routes/
 │   │   ├── +layout.svelte      # Root layout with CSS import
 │   │   ├── +page.svelte        # Homepage with agency list
-│   │   ├── +page.server.ts     # Server-side data loading from D1
+│   │   ├── +page.server.ts     # Server-side data loading with Drizzle
 │   │   ├── about/
 │   │   │   └── +page.svelte    # About page
 │   │   ├── admin/              # Admin CRUD interface
@@ -73,6 +80,7 @@ is-agencies/
 ├── static/                      # Static assets
 │   └── images/                 # Image assets
 ├── .env                         # Environment variables (empty - uses wrangler.jsonc)
+├── drizzle.config.ts           # Drizzle Kit configuration
 ├── wrangler.jsonc              # Cloudflare configuration (D1, R2 bindings)
 ├── worker-configuration.d.ts   # Auto-generated Cloudflare types (committed)
 ├── svelte.config.js            # SvelteKit configuration
@@ -170,6 +178,10 @@ bun run preview  # Test with wrangler pages dev
 - **`bun run dev`**: Fast development with HMR, emulated Cloudflare bindings via `getPlatformProxy`
 - **`bun run preview`**: Tests the actual built output with full Wrangler emulation (slower, no HMR)
 
+**Command Execution Tip:**
+- Use `bunx <command>` to run npm packages without installing them globally (e.g., `bunx wrangler d1 execute ...`)
+- This is especially useful for wrangler commands when wrangler is not in your PATH
+
 ### Code Quality
 ```bash
 # Format code
@@ -193,20 +205,34 @@ bun run preview
 
 ### Deployment
 ```bash
-# Deploy to Cloudflare Pages
+# Deploy to Cloudflare Pages (includes production migrations)
 bun run deploy
 
-# This runs: wrangler pages deploy .svelte-kit/cloudflare
+# This runs:
+# 1. bun run build (build the app)
+# 2. bun run db:migrate:prod (apply migrations to production D1)
+# 3. wrangler pages deploy .svelte-kit/cloudflare (deploy to Pages)
 ```
 
 ### Database Management
+
+#### Drizzle ORM Workflow
 ```bash
-# Run migrations on local D1
-wrangler d1 migrations apply is-agencies-db --local
+# Generate migration from schema changes
+bun run db:generate
 
-# Run migrations on production D1
-wrangler d1 migrations apply is-agencies-db --remote
+# Apply migrations to local database
+bun run db:migrate:local
 
+# Apply migrations to production database
+bun run db:migrate:prod
+
+# Launch Drizzle Studio (database GUI)
+bun run db:studio
+```
+
+#### Raw Wrangler Commands (if needed)
+```bash
 # Query local D1
 wrangler d1 execute is-agencies-db --local --command "SELECT * FROM agencies"
 
@@ -253,24 +279,46 @@ The D1 database contains the following tables:
    - `tag_id` TEXT (FK to tags)
    - PRIMARY KEY (agency_id, tag_id)
 
-### Data Loading Pattern
-Data is loaded in `+page.server.ts` using the D1 API:
+### Data Loading with Drizzle ORM
+
+Data is loaded using Drizzle's type-safe query builder:
+
 ```typescript
+import { createDb, schema } from '$lib/server/db';
+import { eq } from 'drizzle-orm';
+import type { PageServerLoad } from './$types';
+
 export const load: PageServerLoad = async ({ platform }) => {
-  const db = platform?.env?.DB;
+  if (!platform?.env?.DB) {
+    return { agencies: [] };
+  }
 
-  const agencies = await db
-    .prepare(`
-      SELECT a.*, s.label as size, s.slug as size_slug
-      FROM agencies a
-      LEFT JOIN sizes s ON a.size_id = s.id
-      ORDER BY a.name
-    `)
-    .all();
+  const db = createDb(platform.env.DB);
 
-  return { agencies: agencies.results };
+  // Query with relations (single query with JOINs)
+  const agencies = await db.query.agencies.findMany({
+    where: eq(schema.agencies.visible, true),
+    with: {
+      size: true,
+      tags: {
+        with: {
+          tag: true,
+        },
+      },
+    },
+    orderBy: (agencies, { asc }) => [asc(agencies.name)],
+  });
+
+  return { agencies };
 };
 ```
+
+**Benefits of Drizzle:**
+- Full TypeScript inference (no manual type guards)
+- Relational queries (automatic JOINs)
+- SQL injection protection
+- Auto-completion for table/column names
+- Batch operations for better performance
 
 Note: `prerender = false` is set because we query D1 at runtime.
 

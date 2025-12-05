@@ -12,17 +12,23 @@
     "lint": "oxlint -c .config/.oxlintrc.json --type-aware --type-check --deny-warnings --report-unused-disable-directives",
     "fmt": "oxfmt -c .config/.oxfmtrc.json",
     "fmt:check": "oxfmt -c .config/.oxfmtrc.json --check",
-    "deploy": "wrangler pages deploy .svelte-kit/cloudflare"
+    "deploy": "bun run build && bun run db:migrate:prod && wrangler pages deploy .svelte-kit/cloudflare",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "drizzle-kit migrate",
+    "db:migrate:prod": "wrangler d1 migrations apply is-agencies-db --remote",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@sveltejs/adapter-cloudflare": "7.2.4",
     "@sveltejs/kit": "2.49.1",
+    "drizzle-orm": "^0.45.0",
     "nanoid": "^5.1.6"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "6.2.1",
     "@tailwindcss/vite": "4.1.17",
     "@types/node": "24.10.1",
+    "drizzle-kit": "^0.31.8",
     "oxfmt": "0.16.0",
     "oxlint": "1.31.0",
     "oxlint-tsgolint": "0.8.3",

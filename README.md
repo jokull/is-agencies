@@ -15,7 +15,7 @@ A community-maintained directory of Icelandic web agencies and digital studios. 
 - **Package Manager**: [Bun](https://bun.sh/)
 - **Linting**: [oxlint](https://oxc-project.github.io/) (type-aware, Rust-based)
 - **Formatting**: [oxfmt](https://oxc-project.github.io/) (Rust-based)
-- **Database**: [Cloudflare D1](https://developers.cloudflare.com/d1/) (SQL database)
+- **Database**: [Cloudflare D1](https://developers.cloudflare.com/d1/) (SQL database) with [Drizzle ORM](https://orm.drizzle.team/)
 - **Storage**: [Cloudflare R2](https://developers.cloudflare.com/r2/) (object storage)
 - **Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/) (edge rendering)
 - **CI/CD**: GitHub Actions (automated deployment)
@@ -57,12 +57,18 @@ bun run fmt          # Format code with oxfmt
 bun run fmt:check    # Check code formatting
 bun run lint         # Lint with type-aware oxlint
 
+# Database (Drizzle ORM)
+bun run db:generate       # Generate migration from schema changes
+bun run db:migrate:local  # Apply migrations to local database
+bun run db:migrate:prod   # Apply migrations to production database
+bun run db:studio         # Launch Drizzle Studio (database GUI)
+
 # Building
 bun run build        # Build for Cloudflare Pages
 bun run preview      # Preview production build with Cloudflare emulation
 
 # Deployment
-bun run deploy       # Manually deploy to Cloudflare Pages (or use CI/CD)
+bun run deploy       # Deploy to Cloudflare Pages (includes migrations)
 ```
 
 ## Project Structure
