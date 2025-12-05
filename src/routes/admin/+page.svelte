@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
 	import { normalizeUrl } from '$lib/utils';
 
 	let { data } = $props<{ data: PageData }>();
@@ -11,7 +10,8 @@
 	function handleLogin(e: Event) {
 		e.preventDefault();
 		if (password) {
-			goto(`/admin?password=${encodeURIComponent(password)}`);
+			// Use full page navigation to properly handle server-side redirect
+			window.location.href = `/admin?password=${encodeURIComponent(password)}`;
 		}
 	}
 
