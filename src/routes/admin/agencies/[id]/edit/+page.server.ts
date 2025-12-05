@@ -1,5 +1,6 @@
 import { error, fail, redirect } from '@sveltejs/kit';
 import { getFormString, getFormStringArray } from '$lib/server/form-utils';
+import { ensureHttpsUrl } from '$lib/utils';
 import type { Actions, PageServerLoad } from './$types';
 import { createDb, schema } from '$lib/server/db';
 import { eq, sql } from 'drizzle-orm';
@@ -87,7 +88,7 @@ export const actions: Actions = {
         .update(schema.agencies)
         .set({
           name,
-          url,
+          url: ensureHttpsUrl(url),
           founded: founded ? parseInt(founded) : null,
           logoUrl: logo_url || null,
           sizeId: size_id || null,

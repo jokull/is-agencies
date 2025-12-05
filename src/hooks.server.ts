@@ -17,17 +17,6 @@ export const handle: Handle = async ({ event, resolve }) => {
   const passwordParam = url.searchParams.get("password");
   const secret = platform.env.SECRET;
 
-  // Debug info
-  const debugInfo = {
-    hasPasswordParam: !!passwordParam,
-    hasSecret: !!secret,
-    passwordMatch: passwordParam && secret && passwordParam === secret,
-    protocol: url.protocol,
-    isProduction: url.protocol === "https:",
-    hasCookie: !!cookies.get(AUTH_COOKIE_NAME),
-    cookieValue: cookies.get(AUTH_COOKIE_NAME),
-  };
-
   if (passwordParam && secret && passwordParam === secret) {
     // Set authentication cookie
     // Use secure: false in development (http://), true in production (https://)
@@ -50,13 +39,5 @@ export const handle: Handle = async ({ event, resolve }) => {
   const authCookie = cookies.get(AUTH_COOKIE_NAME);
   event.locals.isAuthenticated = authCookie === "authenticated";
 
-  const response = await resolve(event);
-
-  // Add debug headers (only in dev or for admin routes)
-  if (url.pathname.startsWith("/admin")) {
-    response.headers.set("X-Auth-Debug", JSON.stringify(debugInfo));
-    response.headers.set("X-Is-Authenticated", String(event.locals.isAuthenticated));
-  }
-
-  return response;
+  return resolve(event);
 };

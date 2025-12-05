@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Field from './Field.svelte';
+	import { normalizeUrl } from '$lib/utils';
 	import type { Entry, Asset, EntryFields } from 'contentful';
 
 	interface AgencyFields {
@@ -31,7 +32,7 @@
 		</div>
 		<div class="p-2 flex-grow">
 			<h2 class="text-3xl leading-tight font-bold">
-				<a target="_blank" href={`//${agency.url}`}>{agency.name}</a>
+				<a target="_blank" href={normalizeUrl(agency.url)}>{agency.name}</a>
 			</h2>
 			<div class="flex">
 				{#if agency.founded}

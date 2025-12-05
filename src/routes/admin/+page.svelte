@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
+	import { normalizeUrl } from '$lib/utils';
 
 	let { data } = $props<{ data: PageData }>();
 
@@ -99,7 +100,7 @@
 								</td>
 								<td class="px-6 py-4 whitespace-nowrap">
 									<a
-										href={agency.url}
+										href={normalizeUrl(agency.url)}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="text-sm text-ribbon hover:underline"

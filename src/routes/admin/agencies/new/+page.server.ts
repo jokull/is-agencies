@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { nanoid } from 'nanoid';
 import { getFormString, getFormStringArray } from '$lib/server/form-utils';
+import { ensureHttpsUrl } from '$lib/utils';
 import type { Actions, PageServerLoad } from './$types';
 import { createDb, schema } from '$lib/server/db';
 
@@ -70,7 +71,7 @@ export const actions: Actions = {
       await db.insert(schema.agencies).values({
         id,
         name,
-        url,
+        url: ensureHttpsUrl(url),
         founded: founded ? parseInt(founded) : null,
         logoUrl: logo_url || null,
         sizeId: size_id || null,

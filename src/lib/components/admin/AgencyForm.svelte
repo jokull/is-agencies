@@ -81,9 +81,11 @@
 				name="url"
 				value={agency?.url || ''}
 				required
+				pattern="https://.*"
 				class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-ribbon focus:border-ribbon"
 				placeholder="https://example.com"
 			/>
+			<p class="mt-1 text-xs text-gray-500">Must start with https://</p>
 		</div>
 
 		<!-- Founded -->
