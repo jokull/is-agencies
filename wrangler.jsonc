@@ -27,7 +27,7 @@
       "binding": "IMAGES",
       "bucket_name": "is-agencies-images"
     }
-  ],
+  ]
 
   // Environment variables
   // For local dev: values come from .dev.vars
