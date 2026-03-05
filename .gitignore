@@ -1,14 +1,10 @@
 .DS_Store
 node_modules
-/build
-/.svelte-kit
-/package
+dist/
+.astro/
 .env
 .env.*
 !.env.example
-.dev.vars
-vite.config.ts.timestamp-*
-vite.config.js.timestamp-*
 bun.lockb
 .dump/
 

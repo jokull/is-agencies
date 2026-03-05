@@ -1,0 +1,450 @@
+[
+  {
+    "name": "14islands",
+    "url": "https://www.14islands.com",
+    "founded": null,
+    "logo": "/logos/14islands.svg",
+    "size": "large",
+    "tags": ["Apps", "Branding", "Design", "Ecommerce", "Marketing", "Planning", "Web"]
+  },
+  {
+    "name": "1xINTERNET",
+    "url": "https://www.1xinternet.is",
+    "founded": 2019,
+    "logo": "/logos/1xinternet.png",
+    "size": "large",
+    "tags": ["Cloud", "Web"]
+  },
+  {
+    "name": "Advania",
+    "url": "https://www.advania.is/vorur-og-thjonusta/fyrirtaekjalausnir/veflausnir/",
+    "founded": 1939,
+    "logo": "/logos/advania.png",
+    "size": "large",
+    "tags": ["Apps", "Cloud", "Design", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Aldeilis",
+    "url": "https://aldeilis.is/",
+    "founded": 2011,
+    "logo": "/logos/aldeilis.png",
+    "size": "small",
+    "tags": ["Branding", "Design", "Ecommerce", "Marketing", "Planning", "Web"]
+  },
+  {
+    "name": "Allra \u00e1tta",
+    "url": "https://www.8.is",
+    "founded": 2004,
+    "logo": null,
+    "size": "large",
+    "tags": ["Web"]
+  },
+  {
+    "name": "Andes",
+    "url": "https://www.andes.is",
+    "founded": 2016,
+    "logo": "/logos/andes.png",
+    "size": "small",
+    "tags": ["Cloud"]
+  },
+  {
+    "name": "Aranja",
+    "url": "https://www.aranja.com",
+    "founded": 2014,
+    "logo": "/logos/aranja.png",
+    "size": "large",
+    "tags": ["Apps", "Cloud", "Web"]
+  },
+  {
+    "name": "Avista",
+    "url": "https://www.avista.is",
+    "founded": 2013,
+    "logo": "/logos/avista.png",
+    "size": "small",
+    "tags": ["Design", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Dacoda",
+    "url": "https://www.dacoda.is",
+    "founded": 2002,
+    "logo": "/logos/dacoda.png",
+    "size": "large",
+    "tags": ["Cloud", "Design", "Web"]
+  },
+  {
+    "name": "Datera",
+    "url": "https://www.datera.is",
+    "founded": 2018,
+    "logo": "/logos/datera.png",
+    "size": "small",
+    "tags": ["Marketing", "Planning"]
+  },
+  {
+    "name": "Digido",
+    "url": "https://www.digido.is",
+    "founded": 2018,
+    "logo": "/logos/digido.png",
+    "size": "small",
+    "tags": ["Marketing"]
+  },
+  {
+    "name": "ENUM",
+    "url": "https://www.enum.is",
+    "founded": 2021,
+    "logo": "/logos/enum.png",
+    "size": "small",
+    "tags": ["Apps", "Cloud", "Design", "Planning", "Web"]
+  },
+  {
+    "name": "Fuglar",
+    "url": "https://www.fuglar.com",
+    "founded": 1998,
+    "logo": "/logos/fuglar.png",
+    "size": "large",
+    "tags": ["Web"]
+  },
+  {
+    "name": "Gangverk",
+    "url": "https://www.gangverk.is",
+    "founded": 2011,
+    "logo": "/logos/gangverk.png",
+    "size": "large",
+    "tags": ["Apps", "Cloud", "Design", "Planning", "Web"]
+  },
+  {
+    "name": "Hugsmi\u00f0jan",
+    "url": "https://www.hugsmidjan.is",
+    "founded": 2001,
+    "logo": "/logos/hugsmidjan.png",
+    "size": "large",
+    "tags": ["Branding", "Design", "Ecommerce", "Marketing", "Planning", "Web"]
+  },
+  {
+    "name": "J\u00f3nfr\u00ed & Co.",
+    "url": "https://www.jonfri.is",
+    "founded": 2017,
+    "logo": "/logos/jonfri.png",
+    "size": "small",
+    "tags": ["Design"]
+  },
+  {
+    "name": "J\u00f6kul\u00e1",
+    "url": "https://www.jokula.is",
+    "founded": 2015,
+    "logo": "/logos/jokula.png",
+    "size": "small",
+    "tags": ["Branding", "Design"]
+  },
+  {
+    "name": "Kaktus",
+    "url": "https://www.kaktus.is",
+    "founded": 2019,
+    "logo": "/logos/kaktus.png",
+    "size": "small",
+    "tags": ["Design", "Web"]
+  },
+  {
+    "name": "Ketchup Creative",
+    "url": "https://www.ketchupcreative.com",
+    "founded": 2018,
+    "logo": "/logos/ketchup.png",
+    "size": "small",
+    "tags": ["Marketing", "Planning"]
+  },
+  {
+    "name": "Kodo",
+    "url": "https://www.kodo.is",
+    "founded": 2018,
+    "logo": "/logos/kodo.png",
+    "size": "small",
+    "tags": ["Design", "Web"]
+  },
+  {
+    "name": "Koikoi",
+    "url": "https://www.koikoi.is",
+    "founded": 2017,
+    "logo": "/logos/koikoi.png",
+    "size": "small",
+    "tags": ["Ecommerce", "Web"]
+  },
+  {
+    "name": "Kolibri",
+    "url": "https://www.kolibri.is",
+    "founded": 2007,
+    "logo": "/logos/kolibri.png",
+    "size": "large",
+    "tags": ["Apps", "Branding", "Cloud", "Design", "Web"]
+  },
+  {
+    "name": "Kolofon",
+    "url": "https://www.kolofon.is",
+    "founded": null,
+    "logo": "/logos/kolofon.png",
+    "size": "small",
+    "tags": ["Branding", "Design", "Web"]
+  },
+  {
+    "name": "Kosmos & Kaos",
+    "url": "https://www.kosmosogkaos.is",
+    "founded": 2010,
+    "logo": "/logos/kosmos.png",
+    "size": "large",
+    "tags": ["Apps", "Branding", "Cloud", "Design", "Web"]
+  },
+  {
+    "name": "K\u00f3ral",
+    "url": "https://www.koral.is",
+    "founded": 2018,
+    "logo": "/logos/koral.png",
+    "size": "small",
+    "tags": ["Planning"]
+  },
+  {
+    "name": "Leikbreytir",
+    "url": "https://www.leikbreytir.is",
+    "founded": 2019,
+    "logo": "/logos/leikbreytir.png",
+    "size": "small",
+    "tags": ["Cloud", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Litlj\u00f3mi",
+    "url": "https://litljomi.is",
+    "founded": 2025,
+    "logo": "/logos/litljomi.png",
+    "size": "small",
+    "tags": ["Branding", "Design", "Marketing", "Web"]
+  },
+  {
+    "name": "Metall Design Studio",
+    "url": "https://www.metall.co",
+    "founded": null,
+    "logo": "/logos/metall.png",
+    "size": "small",
+    "tags": ["Design"]
+  },
+  {
+    "name": "Mojo",
+    "url": "https://www.mojo.is",
+    "founded": 2019,
+    "logo": "/logos/mojo.png",
+    "size": "small",
+    "tags": ["Apps", "Branding", "Design", "Web"]
+  },
+  {
+    "name": "Netheimur",
+    "url": "https://www.netheimur.is",
+    "founded": 1998,
+    "logo": "/logos/netheimur.png",
+    "size": "large",
+    "tags": ["Web"]
+  },
+  {
+    "name": "Origo",
+    "url": "https://www.origo.is/lausnir/veflausnir",
+    "founded": 1992,
+    "logo": "/logos/origo.png",
+    "size": "large",
+    "tags": ["Cloud", "Web"]
+  },
+  {
+    "name": "Overcast",
+    "url": "https://www.overcast.is",
+    "founded": 2013,
+    "logo": "/logos/overcast.png",
+    "size": "large",
+    "tags": ["Cloud", "Design", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Parallel",
+    "url": "https://www.prl.is",
+    "founded": 2018,
+    "logo": "/logos/parallel.png",
+    "size": "small",
+    "tags": ["Planning"]
+  },
+  {
+    "name": "Peel",
+    "url": "https://www.peel.is",
+    "founded": 2018,
+    "logo": "/logos/peel.png",
+    "size": "small",
+    "tags": ["Design", "Marketing", "Planning", "Web"]
+  },
+  {
+    "name": "Premis",
+    "url": "https://www.premis.is",
+    "founded": 1999,
+    "logo": "/logos/premis.png",
+    "size": "large",
+    "tags": ["Cloud", "Web"]
+  },
+  {
+    "name": "Pr\u00f3gramm",
+    "url": "https://www.programm.is",
+    "founded": 2007,
+    "logo": "/logos/programm.png",
+    "size": "large",
+    "tags": ["Cloud", "Web"]
+  },
+  {
+    "name": "Reon",
+    "url": "https://www.reon.is",
+    "founded": 2011,
+    "logo": "/logos/reon.png",
+    "size": "large",
+    "tags": ["Apps", "Cloud", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Sahara",
+    "url": "https://www.sahara.is",
+    "founded": 2009,
+    "logo": "/logos/sahara.png",
+    "size": "large",
+    "tags": ["Marketing"]
+  },
+  {
+    "name": "Sendir\u00e1\u00f0i\u00f0",
+    "url": "https://www.sendiradid.is",
+    "founded": 2014,
+    "logo": "/logos/sendiradid.png",
+    "size": "large",
+    "tags": ["Design", "Web"]
+  },
+  {
+    "name": "Sigur",
+    "url": "https://www.sigur.io",
+    "founded": 2012,
+    "logo": "/logos/sigur.png",
+    "size": "small",
+    "tags": ["Design", "Web"]
+  },
+  {
+    "name": "Sj\u00e1",
+    "url": "https://www.sja.is",
+    "founded": 2001,
+    "logo": "/logos/sja.png",
+    "size": "small",
+    "tags": ["Planning"]
+  },
+  {
+    "name": "SmartMedia",
+    "url": "https://www.smartmedia.is",
+    "founded": 2008,
+    "logo": "/logos/smartmedia.png",
+    "size": "large",
+    "tags": ["Design", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Sm\u00f8rre",
+    "url": "https://www.smorre.is",
+    "founded": 2024,
+    "logo": null,
+    "size": "small",
+    "tags": ["Branding", "Design"]
+  },
+  {
+    "name": "Snerpa",
+    "url": "https://www.snerpa.is",
+    "founded": 1994,
+    "logo": "/logos/snerpa.png",
+    "size": "large",
+    "tags": ["Cloud", "Web"]
+  },
+  {
+    "name": "Stefna",
+    "url": "https://www.stefna.is",
+    "founded": 2003,
+    "logo": "/logos/stefna.png",
+    "size": "large",
+    "tags": ["Web"]
+  },
+  {
+    "name": "Stokkur software",
+    "url": "https://www.stokkur.is",
+    "founded": 2014,
+    "logo": "/logos/stokkur.png",
+    "size": "large",
+    "tags": ["Apps", "Design", "Web"]
+  },
+  {
+    "name": "Studio Mango",
+    "url": "https://www.studiomango.is",
+    "founded": 2015,
+    "logo": "/logos/studiomango.png",
+    "size": "small",
+    "tags": ["Web"]
+  },
+  {
+    "name": "Tactica",
+    "url": "https://www.tactica.is",
+    "founded": 2012,
+    "logo": "/logos/tactica.png",
+    "size": "large",
+    "tags": ["Ecommerce"]
+  },
+  {
+    "name": "The Engine",
+    "url": "https://www.theengine.is",
+    "founded": 2014,
+    "logo": "/logos/theengine.png",
+    "size": "large",
+    "tags": ["Marketing"]
+  },
+{
+    "name": "Trigger r\u00e1\u00f0gj\u00f6f",
+    "url": "https://www.trigger.is",
+    "founded": 2019,
+    "logo": "/logos/trigger.png",
+    "size": "small",
+    "tags": ["Planning"]
+  },
+  {
+    "name": "Um a\u00f0 gera",
+    "url": "https://www.umadgera.is",
+    "founded": 2020,
+    "logo": "/logos/umadgera.png",
+    "size": "small",
+    "tags": ["Apps", "Cloud", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Vefsí\u00f0uger\u00f0.com",
+    "url": "https://www.vefsidugerd.com",
+    "founded": 2018,
+    "logo": "/logos/vefsidugerdcom.png",
+    "size": "small",
+    "tags": ["Design", "Marketing", "Web"]
+  },
+  {
+    "name": "Vettvangur",
+    "url": "https://www.vettvangur.is",
+    "founded": 2013,
+    "logo": "/logos/vettvangur.png",
+    "size": "large",
+    "tags": ["Cloud", "Design", "Ecommerce", "Web"]
+  },
+  {
+    "name": "Vice Versa",
+    "url": "https://viceversa.is",
+    "founded": 2020,
+    "logo": "/logos/vice-versa.png",
+    "size": "small",
+    "tags": ["Cloud", "Web"]
+  },
+  {
+    "name": "Viska",
+    "url": "https://www.viska.io",
+    "founded": 2016,
+    "logo": "/logos/viska.png",
+    "size": "small",
+    "tags": ["Design", "Web"]
+  },
+  {
+    "name": "WebMo design",
+    "url": "https://www.webmodesign.is",
+    "founded": 2017,
+    "logo": "/logos/webmo.png",
+    "size": "small",
+    "tags": ["Design", "Ecommerce", "Marketing", "Web"]
+  }
+]

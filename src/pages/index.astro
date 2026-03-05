@@ -1,0 +1,185 @@
+---
+import Base from "../layouts/Base.astro";
+import agencies from "../data/agencies.json";
+
+const allTags = [...new Set(agencies.flatMap((a) => a.tags))].sort();
+---
+
+<Base title="The Big List of Icelandic Digital Agencies">
+  <div class="p-4 m-auto max-w-screen-xl">
+    <h1 class="mb-14 lg:mt-6">
+      <span class="block font-serif text-lg lg:text-4xl italic font-light">
+        The Big List of
+      </span>
+      <span class="text-ribbon text-4xl lg:text-5xl font-medium">
+        Icelandic Digital Agencies
+      </span>
+    </h1>
+
+    <div class="flex">
+      <div class="mb-8 mr-4">
+        <div class="font-light pb-2">Size</div>
+        <button class="pill" data-filter="size" data-value="" data-selected="true">All</button>
+        <div>
+          <button class="pill" data-filter="size" data-value="small">
+            Small <span class="font-light hidden sm:inline">(1&ndash;10 employees)</span>
+          </button>
+          <button class="pill" data-filter="size" data-value="large">
+            Large <span class="font-light hidden sm:inline">(11+ employees)</span>
+          </button>
+        </div>
+      </div>
+      <div class="mb-8">
+        <div class="font-light pb-2">Tag</div>
+        <button class="pill" data-filter="tag" data-value="" data-selected="true">All</button>
+        <div>
+          {allTags.map((tag) => (
+            <button class="pill" data-filter="tag" data-value={tag}>{tag}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div id="grid" class="grid gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {agencies.map((agency) => (
+        <div
+          class="agency-card border-darkcloud border-t-4 border-b hover:bg-white hover:shadow-xl transition-all card"
+          data-size={agency.size}
+          data-tags={agency.tags.join(",")}
+        >
+          <div class="border-l border-r border-dust h-full flex flex-col">
+            <div class="pb-8 border-b border-dust h-24 overflow-hidden">
+              {agency.logo ? (
+                <img src={agency.logo} alt="" class="p-2 block pr-12 max-h-16" loading="lazy" />
+              ) : (
+                <div class="rounded-md bg-black opacity-5 m-2 pr-12 h-10" />
+              )}
+            </div>
+            <div class="p-2 flex-grow">
+              <h2 class="text-3xl leading-tight font-bold">
+                <a target="_blank" href={agency.url}>{agency.name}</a>
+              </h2>
+              <div class="flex">
+                {agency.founded && (
+                  <div class="mr-4 text-darkcloud opacity-80">
+                    <span class="font-serif italic font-light">Since</span>{" "}
+                    <span class="font-mono font-medium">{agency.founded}</span>
+                  </div>
+                )}
+                <div class="mr-4 text-darkcloud opacity-80">
+                  <span class="font-serif italic font-light">Size</span>{" "}
+                  <span class="font-mono font-medium">
+                    {agency.size === "small" ? "1–10" : "11+"}
+                  </span>
+                </div>
+              </div>
+            </div>
+            {agency.tags.length > 0 && (
+              <div class="p-2 border-t border-dust">
+                {agency.tags.map((tag) => (
+                  <div class="rounded-full border border-dust inline-block mr-2 px-3 py-1 text-xs">
+                    {tag}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <footer class="mt-8 mb-4">
+      <div>
+        <div>Made by Brynjar and J&ouml;kull</div>
+        <div>
+          Ping <a href="https://twitter.com/jokull" target="_blank" class="border-b-2 border-ribbon">@jokull</a> with additions and corrections
+        </div>
+        <div class="font-light mt-2">Built with Astro and Tailwind CSS</div>
+        <div class="font-light">
+          Hosted on <a href="https://pages.cloudflare.com" target="_blank" class="border-b-2 border-ribbon">Cloudflare Pages</a>.
+          Source on <a href="https://github.com/jokull/is-agencies" target="_blank" class="border-b-2 border-ribbon">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const pills = document.querySelectorAll<HTMLButtonElement>(".pill[data-filter]");
+    const cards = document.querySelectorAll<HTMLElement>(".agency-card");
+
+    let selectedSize = "";
+    let selectedTags: string[] = [];
+
+    function readFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      selectedSize = params.get("size") || "";
+      selectedTags = params.get("tags")?.split(",").filter(Boolean) || [];
+    }
+
+    function writeToUrl() {
+      const params = new URLSearchParams();
+      if (selectedSize) params.set("size", selectedSize);
+      if (selectedTags.length) params.set("tags", selectedTags.join(","));
+      const qs = params.toString();
+      history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+    }
+
+    function updatePills() {
+      pills.forEach((pill) => {
+        const filter = pill.dataset.filter;
+        const value = pill.dataset.value || "";
+        if (filter === "size") {
+          pill.dataset.selected = String(value === selectedSize);
+        } else if (filter === "tag") {
+          if (value === "") {
+            pill.dataset.selected = String(selectedTags.length === 0);
+          } else {
+            pill.dataset.selected = String(selectedTags.includes(value));
+          }
+        }
+      });
+    }
+
+    function filterCards() {
+      cards.forEach((card) => {
+        const cardSize = card.dataset.size || "";
+        const cardTags = card.dataset.tags?.split(",").filter(Boolean) || [];
+        const sizeMatch = !selectedSize || cardSize === selectedSize;
+        const tagMatch =
+          selectedTags.length === 0 || selectedTags.some((t) => cardTags.includes(t));
+        card.style.display = sizeMatch && tagMatch ? "" : "none";
+      });
+    }
+
+    function apply() {
+      writeToUrl();
+      updatePills();
+      filterCards();
+    }
+
+    pills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        const filter = pill.dataset.filter;
+        const value = pill.dataset.value || "";
+        if (filter === "size") {
+          selectedSize = selectedSize === value ? "" : value;
+        } else if (filter === "tag") {
+          if (value === "") {
+            selectedTags = [];
+          } else {
+            const idx = selectedTags.indexOf(value);
+            if (idx >= 0) {
+              selectedTags.splice(idx, 1);
+            } else {
+              selectedTags.push(value);
+            }
+          }
+        }
+        apply();
+      });
+    });
+
+    readFromUrl();
+    apply();
+  </script>
+</Base>

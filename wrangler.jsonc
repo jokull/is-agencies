@@ -1,35 +1,5 @@
 {
-  // Project name (should match Cloudflare Pages project name)
   "name": "is-agencies",
-
-  // Cloudflare Workers/Pages compatibility date (latest)
   "compatibility_date": "2025-01-01",
-
-  // Compatibility flags for SvelteKit
-  "compatibility_flags": ["nodejs_compat"],
-
-  // Pages build output directory (SvelteKit adapter-cloudflare output)
-  "pages_build_output_dir": ".svelte-kit/cloudflare",
-
-  // D1 Database bindings
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "is-agencies-db",
-      "database_id": "23b6ef28-cddb-4b4b-8a76-21a9d49d643d",
-      "migrations_dir": "./drizzle"
-    }
-  ],
-
-  // R2 Bucket bindings for image storage
-  "r2_buckets": [
-    {
-      "binding": "IMAGES",
-      "bucket_name": "is-agencies-images"
-    }
-  ]
-
-  // Environment variables
-  // For local dev: values come from .dev.vars
-  // For production: set via wrangler pages secret put SECRET
+  "pages_build_output_dir": "dist/"
 }

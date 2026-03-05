@@ -8,7 +8,7 @@
 	"env": {
 		"builtin": true
 	},
-	"ignorePatterns": ["**/.svelte-kit/**", "**/build/**", "**/.config/**", "**/node_modules/**", "**/.wrangler/**", "**/scripts/**", "**/worker-configuration.d.ts"],
+	"ignorePatterns": ["**/dist/**", "**/.astro/**", "**/.config/**", "**/node_modules/**", "**/.wrangler/**", "**/*.astro"],
 	"rules": {
 		"eslint/no-unused-vars": [
 			"warn",
