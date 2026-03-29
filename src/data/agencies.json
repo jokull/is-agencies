@@ -360,6 +360,14 @@
     "tags": ["Web"]
   },
   {
+    "name": "Studioek",
+    "url": "https://www.studioek.is",
+    "founded": 2025,
+    "logo": "/logos/studioek.jpg",
+    "size": "small",
+    "tags": ["Apps", "Branding", "Design", "Ecommerce", "Marketing", "Web"]
+  },
+  {
     "name": "Stokkur software",
     "url": "https://www.stokkur.is",
     "founded": 2014,
