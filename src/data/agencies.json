@@ -2,6 +2,7 @@
   {
     "name": "14islands",
     "url": "https://www.14islands.com",
+    "email": "hello@14islands.com",
     "founded": null,
     "logo": "/logos/14islands.svg",
     "size": "large",
@@ -10,6 +11,7 @@
   {
     "name": "1xINTERNET",
     "url": "https://www.1xinternet.is",
+    "email": null,
     "founded": 2019,
     "logo": "/logos/1xinternet.png",
     "size": "large",
@@ -18,6 +20,7 @@
   {
     "name": "Advania",
     "url": "https://www.advania.is/vorur-og-thjonusta/fyrirtaekjalausnir/veflausnir/",
+    "email": null,
     "founded": 1939,
     "logo": "/logos/advania.png",
     "size": "large",
@@ -26,6 +29,7 @@
   {
     "name": "Aldeilis",
     "url": "https://aldeilis.is/",
+    "email": null,
     "founded": 2011,
     "logo": "/logos/aldeilis.png",
     "size": "small",
@@ -34,6 +38,7 @@
   {
     "name": "Allra átta",
     "url": "https://www.8.is",
+    "email": null,
     "founded": 2004,
     "logo": null,
     "size": "large",
@@ -42,6 +47,7 @@
   {
     "name": "APRÓ",
     "url": "https://www.apro.is",
+    "email": "apro@apro.is",
     "founded": 2024,
     "logo": null,
     "size": "large",
@@ -50,6 +56,7 @@
   {
     "name": "Aranja",
     "url": "https://www.aranja.com",
+    "email": "hello@aranja.com",
     "founded": 2014,
     "logo": "/logos/aranja.png",
     "size": "large",
@@ -58,6 +65,7 @@
   {
     "name": "Avista",
     "url": "https://www.avista.is",
+    "email": "avista@avista.is",
     "founded": 2013,
     "logo": "/logos/avista.png",
     "size": "small",
@@ -66,6 +74,7 @@
   {
     "name": "Dacoda",
     "url": "https://www.dacoda.is",
+    "email": "hallo@dacoda.is",
     "founded": 2002,
     "logo": "/logos/dacoda.png",
     "size": "large",
@@ -74,6 +83,7 @@
   {
     "name": "Datera",
     "url": "https://www.datera.is",
+    "email": "hallo@datera.is",
     "founded": 2018,
     "logo": "/logos/datera.png",
     "size": "small",
@@ -82,6 +92,7 @@
   {
     "name": "Digido",
     "url": "https://www.digido.is",
+    "email": "digido@digido.is",
     "founded": 2018,
     "logo": "/logos/digido.png",
     "size": "small",
@@ -90,6 +101,7 @@
   {
     "name": "ENUM",
     "url": "https://www.enum.is",
+    "email": "hello@enum.is",
     "founded": 2021,
     "logo": "/logos/enum.png",
     "size": "small",
@@ -98,6 +110,7 @@
   {
     "name": "Fuglar",
     "url": "https://www.fuglar.com",
+    "email": "hafa_samband@fuglar.com",
     "founded": 1998,
     "logo": "/logos/fuglar.png",
     "size": "large",
@@ -106,6 +119,7 @@
   {
     "name": "Gangverk",
     "url": "https://www.gangverk.is",
+    "email": null,
     "founded": 2011,
     "logo": "/logos/gangverk.png",
     "size": "large",
@@ -114,6 +128,7 @@
   {
     "name": "Hugsmiðjan",
     "url": "https://www.hugsmidjan.is",
+    "email": "hello@hugsmidjan.is",
     "founded": 2001,
     "logo": "/logos/hugsmidjan.png",
     "size": "large",
@@ -122,6 +137,7 @@
   {
     "name": "Jónfrí & Co.",
     "url": "https://www.jonfri.is",
+    "email": "j@jonfri.is",
     "founded": 2017,
     "logo": "/logos/jonfri.png",
     "size": "small",
@@ -130,6 +146,7 @@
   {
     "name": "Jökulá",
     "url": "https://www.jokula.is",
+    "email": "jokula@jokula.com",
     "founded": 2015,
     "logo": "/logos/jokula.png",
     "size": "small",
@@ -138,6 +155,7 @@
   {
     "name": "Júní",
     "url": "https://www.juni.is",
+    "email": "hallo@juni.is",
     "founded": 2018,
     "logo": "/logos/kosmos.png",
     "size": "large",
@@ -146,6 +164,7 @@
   {
     "name": "Kaktus",
     "url": "https://www.kaktus.is",
+    "email": "info@kaktus.is",
     "founded": 2019,
     "logo": "/logos/kaktus.png",
     "size": "small",
@@ -154,6 +173,7 @@
   {
     "name": "Kodo",
     "url": "https://www.kodo.is",
+    "email": "hello@kodo.is",
     "founded": 2018,
     "logo": "/logos/kodo.png",
     "size": "small",
@@ -162,6 +182,7 @@
   {
     "name": "Kolibri",
     "url": "https://www.kolibri.is",
+    "email": "hello@kolibri.is",
     "founded": 2007,
     "logo": "/logos/kolibri.png",
     "size": "large",
@@ -170,6 +191,7 @@
   {
     "name": "Kolofon",
     "url": "https://www.kolofon.is",
+    "email": null,
     "founded": null,
     "logo": "/logos/kolofon.png",
     "size": "small",
@@ -178,6 +200,7 @@
   {
     "name": "Leikbreytir",
     "url": "https://passcreator.is",
+    "email": null,
     "founded": 2019,
     "logo": "/logos/leikbreytir.png",
     "size": "small",
@@ -186,6 +209,7 @@
   {
     "name": "Litljómi",
     "url": "https://litljomi.is",
+    "email": "hello@litljomi.is",
     "founded": 2025,
     "logo": "/logos/litljomi.png",
     "size": "small",
@@ -194,6 +218,7 @@
   {
     "name": "Metall Design Studio",
     "url": "https://www.metall.co",
+    "email": "info@metall.co",
     "founded": null,
     "logo": "/logos/metall.png",
     "size": "small",
@@ -202,6 +227,7 @@
   {
     "name": "Mojo",
     "url": "https://www.mojo.is",
+    "email": "mojo@mojo.is",
     "founded": 2019,
     "logo": "/logos/mojo.png",
     "size": "small",
@@ -210,6 +236,7 @@
   {
     "name": "Netheimur",
     "url": "https://www.netheimur.is",
+    "email": null,
     "founded": 1998,
     "logo": "/logos/netheimur.png",
     "size": "large",
@@ -218,6 +245,7 @@
   {
     "name": "Norda",
     "url": "https://www.norda.is",
+    "email": "hallo@norda.is",
     "founded": 2014,
     "logo": "/logos/sendiradid.png",
     "size": "large",
@@ -226,6 +254,7 @@
   {
     "name": "OK",
     "url": "https://www.ok.is",
+    "email": null,
     "founded": 1999,
     "logo": "/logos/premis.png",
     "size": "large",
@@ -234,6 +263,7 @@
   {
     "name": "Origo",
     "url": "https://www.origo.is/lausnir/veflausnir",
+    "email": null,
     "founded": 1992,
     "logo": "/logos/origo.png",
     "size": "large",
@@ -242,6 +272,7 @@
   {
     "name": "Overcast",
     "url": "https://www.overcast.is",
+    "email": "hallo@overcast.is",
     "founded": 2013,
     "logo": "/logos/overcast.png",
     "size": "large",
@@ -250,6 +281,7 @@
   {
     "name": "Peel",
     "url": "https://www.peel.is",
+    "email": "peel@peel.is",
     "founded": 2018,
     "logo": "/logos/peel.png",
     "size": "small",
@@ -258,6 +290,7 @@
   {
     "name": "Reon",
     "url": "https://www.reon.is",
+    "email": "reon@reon.is",
     "founded": 2011,
     "logo": "/logos/reon.png",
     "size": "large",
@@ -266,6 +299,7 @@
   {
     "name": "Sahara",
     "url": "https://www.sahara.is",
+    "email": "info@sahara.is",
     "founded": 2009,
     "logo": "/logos/sahara.png",
     "size": "large",
@@ -274,6 +308,7 @@
   {
     "name": "Sjá",
     "url": "https://www.sja.is",
+    "email": null,
     "founded": 2001,
     "logo": "/logos/sja.png",
     "size": "small",
@@ -282,6 +317,7 @@
   {
     "name": "SmartMedia",
     "url": "https://www.smartmedia.is",
+    "email": "smartmedia@smartmedia.is",
     "founded": 2008,
     "logo": "/logos/smartmedia.png",
     "size": "large",
@@ -290,6 +326,7 @@
   {
     "name": "Smørre",
     "url": "https://www.smorre.is",
+    "email": null,
     "founded": 2024,
     "logo": null,
     "size": "small",
@@ -298,6 +335,7 @@
   {
     "name": "Snerpa",
     "url": "https://www.snerpa.is",
+    "email": "snerpa@snerpa.is",
     "founded": 1994,
     "logo": "/logos/snerpa.png",
     "size": "large",
@@ -306,6 +344,7 @@
   {
     "name": "Stefna",
     "url": "https://www.stefna.is",
+    "email": "hjalp@stefna.is",
     "founded": 2003,
     "logo": "/logos/stefna.png",
     "size": "large",
@@ -314,6 +353,7 @@
   {
     "name": "Stokkur software",
     "url": "https://www.stokkur.is",
+    "email": "stokkur@stokkur.is",
     "founded": 2014,
     "logo": "/logos/stokkur.png",
     "size": "large",
@@ -322,6 +362,7 @@
   {
     "name": "Studio Mango",
     "url": "https://mango.is",
+    "email": null,
     "founded": 2015,
     "logo": "/logos/studiomango.png",
     "size": "small",
@@ -330,6 +371,7 @@
   {
     "name": "Studioek",
     "url": "https://www.studioek.is",
+    "email": "hey@studioek.is",
     "founded": 2025,
     "logo": "/logos/studioek.png",
     "size": "small",
@@ -338,6 +380,7 @@
   {
     "name": "Tactica",
     "url": "https://www.tactica.is",
+    "email": null,
     "founded": 2012,
     "logo": "/logos/tactica.png",
     "size": "large",
@@ -346,6 +389,7 @@
   {
     "name": "The Engine",
     "url": "https://www.theengine.is",
+    "email": "info@theengine.is",
     "founded": 2014,
     "logo": "/logos/theengine.png",
     "size": "large",
@@ -354,6 +398,7 @@
   {
     "name": "Trigger ráðgjöf",
     "url": "https://www.trigger.is",
+    "email": null,
     "founded": 2019,
     "logo": "/logos/trigger.png",
     "size": "small",
@@ -362,6 +407,7 @@
   {
     "name": "Vefsíðugerð.com",
     "url": "https://www.vefsidugerd.com",
+    "email": null,
     "founded": 2018,
     "logo": "/logos/vefsidugerdcom.png",
     "size": "small",
@@ -370,6 +416,7 @@
   {
     "name": "Vettvangur",
     "url": "https://www.vettvangur.is",
+    "email": "vettvangur@vettvangur.is",
     "founded": 2013,
     "logo": "/logos/vettvangur.png",
     "size": "large",
@@ -378,6 +425,7 @@
   {
     "name": "Viska",
     "url": "https://www.viska.io",
+    "email": "viska@viska.io",
     "founded": 2016,
     "logo": "/logos/viska.png",
     "size": "small",
@@ -386,6 +434,7 @@
   {
     "name": "WebMo design",
     "url": "https://www.webmodesign.is",
+    "email": "info@webmodesign.com",
     "founded": 2017,
     "logo": "/logos/webmo.png",
     "size": "small",

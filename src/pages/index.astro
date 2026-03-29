@@ -58,6 +58,9 @@ const allTags = [...new Set(agencies.flatMap((a) => a.tags))].sort();
             <div class="p-2 flex-grow">
               <h2 class="text-3xl leading-tight font-bold">
                 <a target="_blank" href={agency.url}>{agency.name}</a>
+                {agency.email && (
+                  <a href={`mailto:${agency.email}`} class="text-sm font-normal text-darkcloud opacity-40 hover:opacity-80 ml-1 align-middle" title={agency.email}>&#9993;</a>
+                )}
               </h2>
               <div class="flex">
                 {agency.founded && (
